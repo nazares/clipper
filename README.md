@@ -1,6 +1,6 @@
 
 <div align="center">
-    <img src="clipper.svg" width="260">
+    <img src="clipper.svg">
 </div>
 <hr>
 <div align="center">
