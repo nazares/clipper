@@ -1,6 +1,6 @@
 # Clipper
 
-![clipper](clipper.svg#center)
+![clipper](sources/clipper.svg#center)
 
 ---
 

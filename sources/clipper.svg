@@ -1,0 +1,11 @@
+<svg version="1.1" viewBox="0 0 432 294" xmlns="http://www.w3.org/2000/svg">
+ <title>clipper</title>
+ <rect width="432" height="294" fill="#f9f9f9" stroke-width="1.4"/>
+ <g stroke-width=".83">
+  <path d="m314 193 96-150-275 150z" fill="#1a1a1a"/>
+  <path d="m256 120-65-84c17 68-5.9 123-5.9 123z" fill="#333"/>
+  <path d="m178 159s25-53 5-123l-81 81z" fill="#666"/>
+  <path d="m174 164-151-84 36 113h63z" fill="#333"/>
+ </g>
+ <text transform="scale(1 .98)" x="55.656296" y="251.67476" fill="#000000" font-size="57px" stroke="#1a1a1a" stroke-width=".84" xml:space="preserve"><tspan x="55.656296" y="251.67476" font-family="Georgia" font-weight="bold" stroke-width=".58"><tspan font-size="64px">CLI</tspan><tspan fill="#666666" font-size="56px" stroke="none" stroke-width=".57">pper</tspan></tspan></text>
+</svg>
