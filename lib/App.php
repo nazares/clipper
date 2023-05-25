@@ -4,23 +4,43 @@ namespace Clipper;
 
 class App
 {
+    /** @var OutputHelper $output */
     protected OutputHelper $output;
-    protected $registry = [];
 
+    /** @var CommandRegistry $commandRegistry */
+    protected CommandRegistry $commandRegistry;
+
+    /**
+     * App constructor
+     *
+     * @return void
+     * */
     public function __construct()
     {
         $this->output = new OutputHelper();
+        $this->commandRegistry = new CommandRegistry();
     }
 
-    public function registerCommand($command, $callback)
+    /**
+     * CLI commad registration
+     *
+     * @param string $command
+     * @param callable $callback
+     * @return void
+     */
+    public function registerCommand(string $command, callable $callback): void
     {
-        $this->registry[$command] = $callback;
+        $this->commandRegistry->registerCommand($command, $callback);
     }
 
-    public function runCommand(array $argv)
+    /**
+     * @param array $argv
+     * @return void
+     */
+    public function runCommand(array $argv): void
     {
         $commandName = $argv[1] ?? 'help';
-        $command = $this->registry[$commandName] ?? null;
+        $command = $this->commandRegistry->getCommand($commandName);
 
         if ($command === null) {
             $this->output->print(sprintf("ERROR: Command \"%s\" not found.", $commandName));
@@ -29,7 +49,12 @@ class App
         call_user_func($command, $argv);
     }
 
-    public function print($out)
+    /**
+     *
+     * @param string $out
+     * @return void
+     */
+    public function print(string $out)
     {
         return $this->output->print($out);
     }
