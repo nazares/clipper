@@ -4,7 +4,7 @@ namespace Clipper;
 
 class App
 {
-    public OutputHelper $output;
+    protected OutputHelper $output;
     protected $registry = [];
 
     public function __construct()
@@ -27,5 +27,10 @@ class App
             exit;
         }
         call_user_func($command, $argv);
+    }
+
+    public function print($out)
+    {
+        return $this->output->print($out);
     }
 }

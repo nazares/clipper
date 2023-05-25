@@ -14,11 +14,11 @@ $app = new App();
 
 $app->registerCommand('hello', function($argv) use ($app) {
     $name = $argv[2] ?? 'World';
-    $app->output->print(sprintf("Hello, %s!", $name));
+    $app->print(sprintf("Hello, %s!", $name));
 });
 
 $app->registerCommand('help', function($argv) use ($app) {
-    $app->output->print("usage: clipper name [ user=name ]");
+    $app->print("usage: clipper name [ user=name ]");
 });
 
 $app->runCommand($argv);
