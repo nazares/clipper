@@ -2,8 +2,14 @@
 
 <?php
 
+use Clipper\App;
+
 if (php_sapi_name() !== 'cli') {
     exit;
 }
 
-echo "hello world!\n";
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new App();
+$app->runCommand($argv);
+
