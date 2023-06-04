@@ -10,15 +10,11 @@ if (php_sapi_name() !== 'cli') {
 
 require __DIR__ . '/vendor/autoload.php';
 
-$app = new App();
+$config = [
+    'rootPath' => __DIR__,
+    'theme' => 'unicorn',
+    'version' => '0.0.1'
+];
 
-$app->registerCommand('hello', function($argv) use ($app) {
-    $name = $argv[2] ?? 'World';
-    $app->print(sprintf("Hello, %s!", $name));
-});
-
-$app->registerCommand('help', function($argv) use ($app) {
-    $app->print("usage: clipper name [ user=name ]");
-});
-
+$app = new App($config);
 $app->runCommand($argv);
