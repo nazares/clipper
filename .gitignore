@@ -2,3 +2,4 @@
 vendor/
 .history/
 .vscode/
+composer.lock
