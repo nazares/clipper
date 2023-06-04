@@ -3,6 +3,9 @@
         "psr-4": {
             "Clipper\\": "lib/",
             "App\\": "app/"
-        }
+        },
+        "files": [
+            "helpers/debug.php"
+        ]
     }
 }
