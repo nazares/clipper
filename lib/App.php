@@ -24,7 +24,7 @@ class App
             'theme'    => 'regular',
         ], $config);
 
-        $this->setSignature('./minicli help');
+        $this->setSignature('./clipper help');
 
         $this->addService('config', new Config($config));
         $this->addService('command_registry', new CommandRegistry($this->config->app_path));
