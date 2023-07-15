@@ -17,4 +17,15 @@ $config = [
 ];
 
 $app = new App($config);
-$app->runCommand($argv);
+
+echo $app->apply('Hello World');
+
+$id = exec("nohup php -S 0.0.0.0:0 > /dev/null 2>&1 & echo $!", $out);
+
+# var_dump($id);
+
+exec("lsof -i -P | grep {$id}");
+
+# var_dump($command);
+
+# $app->runCommand($argv);
