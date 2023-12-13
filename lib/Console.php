@@ -6,28 +6,28 @@ use Clipper\Command\CommandCall;
 use Clipper\Command\CommandRegistry;
 use Clipper\Output\CliPrinter;
 
-class App
+class Console
 {
     /** @var  string  */
-    protected $app_signature;
+    protected $appSignature;
 
     /** @var  array */
     protected $services = [];
 
     /** @var array  */
-    protected $loaded_services = [];
+    protected $loadedServices = [];
 
     public function __construct(array $config = null)
     {
         $config = array_merge([
-            'app_path' => __DIR__ . '/../app/Command',
+            'appPath' => __DIR__ . '/../console/Command',
             'theme'    => 'regular',
         ], $config);
 
         $this->setSignature('./clipper help');
 
         $this->addService('config', new Config($config));
-        $this->addService('command_registry', new CommandRegistry($this->config->app_path));
+        $this->addService('commandRegistry', new CommandRegistry($this->config->appPath));
         $this->addService('printer', new CliPrinter());
     }
 
@@ -42,7 +42,7 @@ class App
             return null;
         }
 
-        if (!array_key_exists($name, $this->loaded_services)) {
+        if (!array_key_exists($name, $this->loadedServices)) {
             $this->loadService($name);
         }
 
@@ -63,7 +63,7 @@ class App
      */
     public function loadService($name)
     {
-        $this->loaded_services[$name] = $this->services[$name]->load($this);
+        $this->loadedServices[$name] = $this->services[$name]->load($this);
     }
 
     /**
@@ -79,7 +79,7 @@ class App
      */
     public function getSignature()
     {
-        return $this->app_signature;
+        return $this->appSignature;
     }
 
     /**
@@ -90,11 +90,11 @@ class App
         $this->getPrinter()->display(sprintf("usage: %s", $this->getSignature()));
     }
     /**
-     * @param string $app_signature
+     * @param string $appSignature
      */
-    public function setSignature($app_signature)
+    public function setSignature($appSignature)
     {
-        $this->app_signature = $app_signature;
+        $this->appSignature = $appSignature;
     }
 
     /**
@@ -103,7 +103,7 @@ class App
      */
     public function registerCommand($name, $callable)
     {
-        $this->command_registry->registerCommand($name, $callable);
+        $this->commandRegistry->registerCommand($name, $callable);
     }
 
     /**
@@ -118,7 +118,7 @@ class App
             exit;
         }
 
-        $controller = $this->command_registry->getCallableController($input->command, $input->subcommand);
+        $controller = $this->commandRegistry->getCallableController($input->command, $input->subcommand);
 
         if ($controller instanceof ControllerInterface) {
             $controller->boot($this);
@@ -136,8 +136,8 @@ class App
     protected function runSingle(CommandCall $input)
     {
         try {
-            $callable = $this->command_registry->getCallable($input->command);
-            call_user_func($callable, $input);
+            $callback = $this->commandRegistry->getCallback($input->command);
+            call_user_func($callback, $input);
         } catch (\Exception $e) {
             $this->getPrinter()->display("ERROR: " . $e->getMessage());
             $this->printSignature();

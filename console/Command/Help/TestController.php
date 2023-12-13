@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Command\Help;
+namespace Console\Command\Help;
 
 use Clipper\Command\CommandController;
 

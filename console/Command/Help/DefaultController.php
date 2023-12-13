@@ -1,28 +1,26 @@
 <?php
 
-namespace App\Command\Help;
+namespace Console\Command\Help;
 
-use Clipper\App;
+use Clipper\Console;
 use Clipper\Command\CommandController;
-
-// use Minicli\Command\CommandRegistry;
 
 class DefaultController extends CommandController
 {
     /** @var  array */
-    protected $command_map = [];
+    protected $commandMap = [];
 
-    public function boot(App $app)
+    public function boot(Console $console)
     {
-        parent::boot($app);
-        $this->command_map = $app->command_registry->getCommandMap();
+        parent::boot($console);
+        $this->commandMap = $console->commandRegistry->getCommandMap();
     }
 
     public function handle()
     {
         $this->getPrinter()->info('Available Commands');
 
-        foreach ($this->command_map as $command => $sub) {
+        foreach ($this->commandMap as $command => $sub) {
             $this->getPrinter()->newline();
             $this->getPrinter()->out($command, 'info_alt');
 

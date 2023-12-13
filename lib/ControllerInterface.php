@@ -9,10 +9,10 @@ interface ControllerInterface
     /**
      * Called before `run`
      *
-     * @param App $app
+     * @param Console $console
      * @return void
      */
-    public function boot(App $app);
+    public function boot(Console $console);
 
     /**
      * Main execution

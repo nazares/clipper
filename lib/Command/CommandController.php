@@ -2,14 +2,14 @@
 
 namespace Clipper\Command;
 
-use Clipper\App;
+use Clipper\Console;
 use Clipper\ControllerInterface;
 use Clipper\Output\CliPrinter;
 
 abstract class CommandController implements ControllerInterface
 {
-    /** @var App */
-    protected App $app;
+    /** @var Console */
+    protected Console $app;
 
     /** @var CommandCall */
     protected CommandCall $input;
@@ -22,9 +22,9 @@ abstract class CommandController implements ControllerInterface
     abstract public function handle();
 
     /** @inheritDoc */
-    public function boot(App $app)
+    public function boot(Console $console)
     {
-        $this->app = $app;
+        $this->app = $console;
     }
 
     /** @inheritDoc */
@@ -60,8 +60,8 @@ abstract class CommandController implements ControllerInterface
         return $this->input->hasParam($param);
     }
 
-    /** @return App */
-    public function getApp(): App
+    /** @return Console */
+    public function getApp(): Console
     {
         return $this->app;
     }

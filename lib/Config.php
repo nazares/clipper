@@ -45,7 +45,7 @@ class Config implements ServiceInterface
     /**
      * @inheritDoc
      */
-    public function load(App $app)
+    public function load(Console $console)
     {
         return null;
     }

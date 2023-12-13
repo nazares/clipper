@@ -2,7 +2,7 @@
 
 namespace Clipper\Output;
 
-use Clipper\App;
+use Clipper\Console;
 use Clipper\OutputInterface;
 use Clipper\ServiceInterface;
 
@@ -17,7 +17,7 @@ class CliPrinter implements OutputInterface, ServiceInterface
         $this->setTheme($theme);
     }
 
-    public function load(App $app)
+    public function load(Console $app)
     {
         $theme = new CliTheme(CliColors::palette($app->config->palette));
         $this->setTheme($theme);

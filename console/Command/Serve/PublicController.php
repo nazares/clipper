@@ -1,14 +1,18 @@
 <?php
 
-namespace App\Command\Serve;
+namespace Console\Command\Serve;
 
 use Clipper\Command\CommandController;
 use helpers\Color;
 
-class DefaultController extends CommandController
+class PublicController extends CommandController
 {
     public function handle()
     {
+        $params = $this->getParams();
+
+        var_dump($params);
+
         $public = $this->getApp()->config->rootPath . '/public';
         echo setColor("\nServer Started", Color::White, Color::Blue);
         echo sprintf("\non %s\n", $public);

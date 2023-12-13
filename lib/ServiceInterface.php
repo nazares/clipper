@@ -7,8 +7,8 @@ interface ServiceInterface
     /**
      * Loads components
      *
-     * @param App $app
+     * @param Console $console
      * @return void
      */
-    public function load(App $app);
+    public function load(Console $console);
 }
