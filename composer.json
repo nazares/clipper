@@ -1,8 +1,9 @@
 {
+    "name": "nazares/clipper",
+
     "autoload": {
         "psr-4": {
-            "Clipper\\": "lib/",
-            "Console\\": "console/"
+            "Clipper\\": "lib/"
         },
         "files": [
             "helpers/debug.php"
