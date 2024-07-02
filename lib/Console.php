@@ -20,7 +20,7 @@ class Console
     public function __construct(array $config = null)
     {
         $config = array_merge([
-            'appPath' => "{$config['rootPAth']}/console/Command",
+            'appPath' => "{$config['rootPath']}/console/Command",
             'theme'    => 'regular',
         ], $config);
 
